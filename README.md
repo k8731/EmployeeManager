@@ -25,4 +25,4 @@ dotnet restore
 dotnet run
 
 ## 畫面
-<img src="EmployeeManager/image.png" width="1200">
+<img src="image.png" width="1200">
