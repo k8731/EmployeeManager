@@ -23,3 +23,6 @@ dotnet restore
 
 3. 執行專案：
 dotnet run
+
+## 畫面
+<img src="EmployeeManager/image.PNG" width="1200">
