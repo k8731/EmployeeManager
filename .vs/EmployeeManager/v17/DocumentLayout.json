@@ -1,0 +1,71 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Roycie\\OneDrive\\\u684C\u9762\\EmployeeManager\\EmployeeManager\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{D330BFC8-C242-422B-AFB8-A22954AAFBE3}|EmployeeManager.csproj|c:\\users\\roycie\\onedrive\\\u684C\u9762\\employeemanager\\employeemanager\\views\\employee\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{D330BFC8-C242-422B-AFB8-A22954AAFBE3}|EmployeeManager.csproj|solutionrelative:views\\employee\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D330BFC8-C242-422B-AFB8-A22954AAFBE3}|EmployeeManager.csproj|c:\\users\\roycie\\onedrive\\\u684C\u9762\\employeemanager\\employeemanager\\controllers\\employeecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D330BFC8-C242-422B-AFB8-A22954AAFBE3}|EmployeeManager.csproj|solutionrelative:controllers\\employeecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D330BFC8-C242-422B-AFB8-A22954AAFBE3}|EmployeeManager.csproj|c:\\users\\roycie\\onedrive\\\u684C\u9762\\employeemanager\\employeemanager\\views\\employee\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{D330BFC8-C242-422B-AFB8-A22954AAFBE3}|EmployeeManager.csproj|solutionrelative:views\\employee\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Create.cshtml",
+              "DocumentMoniker": "C:\\Users\\Roycie\\OneDrive\\\u684C\u9762\\EmployeeManager\\EmployeeManager\\Views\\Employee\\Create.cshtml",
+              "RelativeDocumentMoniker": "Views\\Employee\\Create.cshtml",
+              "ToolTip": "C:\\Users\\Roycie\\OneDrive\\\u684C\u9762\\EmployeeManager\\EmployeeManager\\Views\\Employee\\Create.cshtml",
+              "RelativeToolTip": "Views\\Employee\\Create.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-08-29T09:52:06.637Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\Roycie\\OneDrive\\\u684C\u9762\\EmployeeManager\\EmployeeManager\\Views\\Employee\\Index.cshtml",
+              "RelativeDocumentMoniker": "Views\\Employee\\Index.cshtml",
+              "ToolTip": "C:\\Users\\Roycie\\OneDrive\\\u684C\u9762\\EmployeeManager\\EmployeeManager\\Views\\Employee\\Index.cshtml",
+              "RelativeToolTip": "Views\\Employee\\Index.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-08-08T21:32:43.898Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "EmployeeController.cs",
+              "DocumentMoniker": "C:\\Users\\Roycie\\OneDrive\\\u684C\u9762\\EmployeeManager\\EmployeeManager\\Controllers\\EmployeeController.cs",
+              "RelativeDocumentMoniker": "Controllers\\EmployeeController.cs",
+              "ToolTip": "C:\\Users\\Roycie\\OneDrive\\\u684C\u9762\\EmployeeManager\\EmployeeManager\\Controllers\\EmployeeController.cs",
+              "RelativeToolTip": "Controllers\\EmployeeController.cs",
+              "ViewState": "AgIAACUAAAAAAAAAAAAYwG4AAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-08T21:26:52.032Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

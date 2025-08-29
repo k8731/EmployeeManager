@@ -1,0 +1,177 @@
+﻿@model List<EmployeeManager.Models.Employee>
+
+<div class="container mt-4">
+    <div class="d-flex justify-content-between align-items-center mt-4 mb-3">
+        <h2 class="mb-0">員工清單</h2>
+        <a asp-action="Create" class="btn btn-success">新增員工</a>
+        <a asp-action="ExportCsv" class="btn btn-info mb-3">匯出員工清單</a>
+    </div>
+
+    <!-- 顯示一次性錯誤訊息 -->
+    @if (TempData["Error"] != null)
+    {
+        <div class="alert alert-danger">
+            @TempData["Error"]
+        </div>
+    }
+
+    <!-- 搜尋表單 -->
+    <form asp-action="Index" method="get" class="row g-2 mb-3">
+        <div class="col-md-4">
+            <input type="text" name="searchName" value="@ViewBag.SearchName"
+                   class="form-control" placeholder="輸入姓名">
+        </div>
+        <div class="col-md-4">
+            <input type="text" name="searchDept" value="@ViewBag.SearchDept"
+                   class="form-control" placeholder="輸入部門">
+        </div>
+        <div class="col-md-4">
+            <button type="submit" class="btn btn-primary w-100">搜尋</button>
+        </div>
+    </form>
+
+    <!-- 排序按鈕 -->
+    <div class="mb-3">
+        <span class="me-2">排序：</span>
+        <a class="btn btn-sm btn-outline-secondary me-1"
+           asp-action="Index" asp-route-sortOrder="name_asc"
+           asp-route-searchName="@ViewBag.SearchName"
+           asp-route-searchDept="@ViewBag.SearchDept">姓名 ↑</a>
+
+        <a class="btn btn-sm btn-outline-secondary me-1"
+           asp-action="Index" asp-route-sortOrder="name_desc"
+           asp-route-searchName="@ViewBag.SearchName"
+           asp-route-searchDept="@ViewBag.SearchDept">姓名 ↓</a>
+
+        <a class="btn btn-sm btn-outline-secondary me-1"
+           asp-action="Index" asp-route-sortOrder="dept_asc"
+           asp-route-searchName="@ViewBag.SearchName"
+           asp-route-searchDept="@ViewBag.SearchDept">部門 ↑</a>
+
+        <a class="btn btn-sm btn-outline-secondary"
+           asp-action="Index" asp-route-sortOrder="dept_desc"
+           asp-route-searchName="@ViewBag.SearchName"
+           asp-route-searchDept="@ViewBag.SearchDept">部門 ↓</a>
+    </div>
+
+    <!-- 資料表 -->
+    <table class="table table-striped table-bordered shadow-sm">
+        <thead class="table-dark">
+            <tr>
+                <th>編號</th>
+                <th>姓名</th>
+                <th>部門</th>
+                <th>Email</th>
+                <th>操作</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var emp in Model)
+            {
+                <tr>
+                    <td>@emp.Id</td>
+                    <td>@emp.Name</td>
+                    <td>@emp.Department</td>
+                    <td>@emp.Email</td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@emp.Id" class="btn btn-sm btn-warning">編輯</a>
+                        <button type="button"
+                                class="btn btn-sm btn-danger"
+                                data-bs-toggle="modal"
+                                data-bs-target="#deleteModal"
+                                data-id="@emp.Id"
+                                data-name="@emp.Name">
+                            刪除
+                        </button>
+
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <!-- 分頁按鈕 -->
+    @if (ViewBag.TotalPages > 1)
+    {
+        <nav>
+            <ul class="pagination">
+                <!-- 上一頁 -->
+                <li class="page-item @(ViewBag.CurrentPage == 1 ? "disabled" : "")">
+                    <a class="page-link"
+                       asp-action="Index"
+                       asp-route-page="@(ViewBag.CurrentPage - 1)"
+                       asp-route-searchName="@ViewBag.SearchName"
+                       asp-route-searchDept="@ViewBag.SearchDept"
+                       asp-route-sortOrder="@ViewBag.SortOrder">上一頁</a>
+                </li>
+
+                <!-- 頁碼 -->
+                @for (int i = 1; i <= ViewBag.TotalPages; i++)
+                {
+                    <li class="page-item @(i == ViewBag.CurrentPage ? "active" : "")">
+                        <a class="page-link"
+                           asp-action="Index"
+                           asp-route-page="@i"
+                           asp-route-searchName="@ViewBag.SearchName"
+                           asp-route-searchDept="@ViewBag.SearchDept"
+                           asp-route-sortOrder="@ViewBag.SortOrder">@i</a>
+                    </li>
+                }
+
+                <!-- 下一頁 -->
+                <li class="page-item @(ViewBag.CurrentPage == ViewBag.TotalPages ? "disabled" : "")">
+                    <a class="page-link"
+                       asp-action="Index"
+                       asp-route-page="@(ViewBag.CurrentPage + 1)"
+                       asp-route-searchName="@ViewBag.SearchName"
+                       asp-route-searchDept="@ViewBag.SearchDept"
+                       asp-route-sortOrder="@ViewBag.SortOrder">下一頁</a>
+                </li>
+            </ul>
+        </nav>
+    }
+</div>
+
+<!-- 刪除確認 Modal -->
+<div class="modal fade" id="deleteModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header bg-danger text-white">
+                <h5 class="modal-title">確認刪除</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                你確定要刪除 <strong id="empName"></strong> 嗎？
+            </div>
+            <div class="modal-footer">
+                <form id="deleteForm" asp-action="Delete" method="post">
+                    <input type="hidden" name="id" id="empId" />
+                    <input type="hidden" name="page" value="@ViewBag.CurrentPage" />
+                    <input type="hidden" name="searchName" value="@ViewBag.SearchName" />
+                    <input type="hidden" name="searchDept" value="@ViewBag.SearchDept" />
+                    <input type="hidden" name="sortOrder" value="@ViewBag.SortOrder" />
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
+                    <button type="submit" class="btn btn-danger">刪除</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        var deleteModal = document.getElementById('deleteModal');
+        deleteModal.addEventListener('show.bs.modal', function (event) {
+            var button = event.relatedTarget; // 取得觸發的按鈕
+            var empId = button.getAttribute('data-id');
+            var empName = button.getAttribute('data-name');
+
+            // 塞進 modal 的顯示文字和隱藏欄位
+            document.getElementById('empName').textContent = empName;
+            document.getElementById('empId').value = empId;
+
+            // 設定 form 的 action，送到 Delete Confirm
+            document.getElementById('deleteForm').action = '/Employee/Delete/'+ empId;
+        });
+    </script>
+}
