@@ -16,7 +16,6 @@
 
 ## 安裝
 1. Clone 專案：
-```bash
 git clone https://github.com/k8731/EmployeeManager
 
 2. 開啟專案，確保已安裝必要 NuGet 套件：
