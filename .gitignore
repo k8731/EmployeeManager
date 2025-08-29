@@ -1,7 +1,6 @@
 # Build Folders
-bin/
-obj/
-out/
+/bin/
+/obj/
 
 # Visual Studio Files
 .vs/
